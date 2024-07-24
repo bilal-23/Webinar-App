@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 const config: Config = {
   content: [
@@ -8,6 +8,38 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        "blue-btn": "0px 8px 20px -8px #0E51F1",
+      },
+      colors: {
+        light: {
+          accent: {
+            black: "#0E1013",
+            blue: "#0E51F1",
+            green: "#088761",
+            pink: "#E72174",
+            purple: "#741DE3",
+            red: "#D14040",
+            "red-pastel": "#F9E8E8",
+            teal: "#08A79E",
+            yellow: "#FFB023",
+          },
+          background: {
+            1: "#FFFFFF",
+            3: "#D5DBE4",
+          },
+          border: {
+            0: "#E3E7EC",
+          },
+          text: {
+            0: "#0E1013",
+            1: "#2E333B",
+            2: "#444952",
+            3: "#FFFFFF",
+            placeholder: "#636973",
+          },
+        },
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -16,5 +48,5 @@ const config: Config = {
     },
   },
   plugins: [],
-};
-export default config;
+}
+export default config
