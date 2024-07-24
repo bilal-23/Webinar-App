@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       boxShadow: {
         "blue-btn": "0px 8px 20px -8px #0E51F1",
+        light: "0px 20px 46px -24px rgba(14, 16, 19, 0.12)",
       },
       colors: {
         light: {
@@ -25,6 +26,7 @@ const config: Config = {
             yellow: "#FFB023",
           },
           background: {
+            0: "#F2F4F8",
             1: "#FFFFFF",
             3: "#D5DBE4",
           },
