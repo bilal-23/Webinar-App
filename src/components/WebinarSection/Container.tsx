@@ -15,7 +15,7 @@ export function Container() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="grid h-[calc(100vh-181px)] flex-1 grid-cols-3 place-items-start gap-7 overflow-y-scroll pt-7"
+      className="grid h-[calc(100vh-181px)] flex-1 place-items-start gap-7 overflow-y-scroll pt-7 sm:grid-cols-2 lg:grid-cols-3"
     >
       <AnimatePresence>
         {webinars.map((webinar) => {

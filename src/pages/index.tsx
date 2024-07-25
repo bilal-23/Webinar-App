@@ -20,7 +20,7 @@ export default function Home() {
         <div className="size-full">
           <Header />
           <main>
-            <div className="mt-6 flex w-full items-center justify-between pr-[56px]">
+            <div className="mt-6 flex w-full flex-col items-center justify-between pr-[56px] sm:flex-row">
               <Search />
               <FilterDropdown />
             </div>

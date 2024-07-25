@@ -17,7 +17,7 @@ export function InstructorDetailsFormSection() {
           Instructor Detail
         </p>
         {/* Input Fields */}
-        <div className="grid w-full grid-cols-2 gap-10">
+        <div className="grid w-full gap-10 sm:grid-cols-2">
           {/* Input group */}
           <div className="space-y-[19px]">
             <div className="flex w-full flex-col items-start gap-3">

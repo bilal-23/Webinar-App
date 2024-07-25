@@ -33,7 +33,7 @@ export function WebinarDetailFormSection() {
               name="webinarTitle"
             />
           </div>
-          <div className="mt-[13px] flex items-center justify-start gap-6">
+          <div className="mt-[13px] flex flex-wrap items-center justify-start gap-6">
             {/* Start date */}
             <div className="flex w-full flex-col items-start gap-3">
               <Label htmlFor="start_date" className="flex">

@@ -84,7 +84,7 @@ export function WebinarForm({ closeForm }: Props) {
   }
 
   return (
-    <div className="scrollbar-none flex h-[839px] w-[910px] flex-col overflow-y-scroll">
+    <div className="scrollbar-none flex h-[839px] flex-col overflow-y-scroll lg:w-[910px]">
       {/* Header */}
       <div className="sticky top-0 z-50 flex items-start justify-between border-b border-[#E3E7EC] bg-white px-[31.5px] pb-[30px] pt-5">
         <p className="text-lg font-semibold text-light-text-0">

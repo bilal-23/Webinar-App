@@ -29,7 +29,7 @@ export function FilterDropdown() {
         sx={{ height: 44 }}
         label="Age"
         onChange={handleChange}
-        className="w-[220px] rounded-[10px]"
+        className="w-[320px] rounded-[10px] sm:w-[220px]"
       >
         <MenuItem value="">
           <em>None</em>

@@ -12,7 +12,7 @@ export function Search() {
   }
 
   return (
-    <div className="flex h-[44px] w-[380px] shrink-0 items-center justify-start gap-2 rounded-[10px] border border-light-border-0 bg-light-background-1 px-[16px]">
+    <div className="flex h-[44px] w-full shrink-0 items-center justify-start gap-2 rounded-[10px] border border-light-border-0 bg-light-background-1 px-[16px] sm:w-[380px]">
       <SearchIcon className="text-light-text-placeholder" />
       <input
         className="font-regular w-full bg-transparent text-sm text-light-text-placeholder focus:outline-none"
