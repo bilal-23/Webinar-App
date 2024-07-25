@@ -15,12 +15,12 @@ export default function Home() {
         <title>Home - Webinar App</title>
       </Head>
       <div
-        className={`max-w-screen-[1296px] mx-auto flex h-lvh min-h-screen flex-col items-center overflow-hidden bg-white py-6 pl-[46px] ${inter.className}`}
+        className={`max-w-screen-[1296px] mx-auto flex h-lvh min-h-screen flex-col items-center overflow-hidden bg-white px-4 py-6 lg:pl-[46px] ${inter.className}`}
       >
         <div className="size-full">
           <Header />
           <main>
-            <div className="mt-6 flex w-full flex-col items-center justify-between pr-[56px] sm:flex-row">
+            <div className="mt-6 flex w-full flex-col items-center justify-center sm:flex-row sm:justify-between sm:pr-[56px]">
               <Search />
               <FilterDropdown />
             </div>

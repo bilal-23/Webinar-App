@@ -96,7 +96,7 @@ export function WebinarForm({ closeForm }: Props) {
       </div>
       <form className="flex-1 pt-[43px]" onSubmit={handleFormSubmit}>
         {/* Form Area */}
-        <div className="flex w-full flex-col gap-8 px-8">
+        <div className="flex w-full flex-col gap-8 px-1 sm:px-8">
           {/* First Form Section */}
           <InstructorDetailsFormSection />
 
