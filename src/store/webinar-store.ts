@@ -7,6 +7,9 @@ interface WebinarStoreInitialState {
   webinars: Webinar[]
   activeWebinar: Webinar | null
   webinarFormState: "open" | "closed"
+  topics: string[]
+  selectedTopic: string
+  searchInput: string
 }
 
 interface WebinarStore extends WebinarStoreInitialState {
@@ -16,36 +19,83 @@ interface WebinarStore extends WebinarStoreInitialState {
 
   addWebinar: (webinar: Webinar) => void
   updateWebinar: (webinar: Webinar) => void
+
+  setTopics: (topics: string[]) => void
+  setSelectedTopic: (selectedTopic: string) => void
+  setSearchInput: (searchInput: string) => void
 }
 
 export const useWebinarStore = create<WebinarStore>((set) => ({
   webinars: webinars,
   activeWebinar: null,
   webinarFormState: "closed",
+  topics: [],
+  selectedTopic: "",
+  searchInput: "",
 
   setActiveWebinar: (webinar: Webinar | null) => {
     set((state) => ({
       activeWebinar: webinar,
     }))
   },
+  //   Controls the state of the webinar form
   setWebinarFormState: (formState: "open" | "closed") => {
-    set(() => ({
-      webinarFormState: formState,
-    }))
+    set((state) => {
+      const topics = state.webinars.map((webinar) => webinar.topic)
+      return {
+        webinarFormState: formState,
+        topics: topics,
+      }
+    })
   },
+
+  //   Deletes a webinar from the store, and also from the topics array
   deleteWebinar: (webinarId: string) => {
-    set((state) => ({
-      webinars: state.webinars.filter((webinar) => webinar.id !== webinarId),
-    }))
+    set((state) => {
+      const topics = state.webinars.map((webinar) => webinar.topic)
+      return {
+        webinars: state.webinars.filter((webinar) => webinar.id !== webinarId),
+        topics: topics,
+      }
+    })
   },
+  //   Adds a webinar to the store, and also to the topics array
   addWebinar: (webinar: Webinar) => {
-    set((state) => ({
-      webinars: [webinar, ...state.webinars],
+    set((state) => {
+      const topics = state.webinars.map((webinar) => webinar.topic)
+      return {
+        webinars: [webinar, ...state.webinars],
+        topics: [...topics, webinar.topic],
+      }
+    })
+  },
+  //   Updates a webinar in the store, and also in the topics array
+  updateWebinar: (webinar: Webinar) => {
+    set((state) => {
+      const topics = state.webinars.map((webinar) => webinar.topic)
+      return {
+        webinars: state.webinars.map((w) =>
+          w.id === webinar.id ? webinar : w
+        ),
+        topics: topics,
+      }
+    })
+  },
+
+  setTopics: (topics: string[]) => {
+    set(() => ({
+      topics: topics,
     }))
   },
-  updateWebinar: (webinar: Webinar) => {
-    set((state) => ({
-      webinars: state.webinars.map((w) => (w.id === webinar.id ? webinar : w)),
+
+  setSearchInput: (searchInput: string) => {
+    set(() => ({
+      searchInput: searchInput,
+    }))
+  },
+  setSelectedTopic: (selectedTopic: string) => {
+    set(() => ({
+      selectedTopic: selectedTopic,
     }))
   },
 }))

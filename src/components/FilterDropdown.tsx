@@ -1,23 +1,31 @@
 import * as React from "react"
+import { useWebinarStore } from "@/store/webinar-store"
 import FormControl from "@mui/material/FormControl"
 import InputLabel from "@mui/material/InputLabel"
 import MenuItem from "@mui/material/MenuItem"
 import Select from "@mui/material/Select"
+import { useShallow } from "zustand/react/shallow"
 
 export function FilterDropdown() {
-  const [age, setAge] = React.useState("")
+  const { topics, setTopics, webinars, selectedTopic, setSelectedTopic } =
+    useWebinarStore(useShallow((state) => state))
 
-  const handleChange = (event) => {
-    setAge(event.target.value)
+  React.useEffect(() => {
+    const topics = webinars.map((webinar) => webinar.topic)
+    setTopics(topics)
+  }, [setTopics, webinars])
+
+  const handleChange = (event: any) => {
+    setSelectedTopic(event.target.value)
   }
 
   return (
     <FormControl sx={{ m: 1, borderRadius: 10, height: 44 }}>
-      <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
+      <InputLabel id="demo-simple-select-helper-label">Topics</InputLabel>
       <Select
         labelId="demo-simple-select-helper-label"
         id="demo-simple-select-helper"
-        value={age}
+        value={selectedTopic}
         sx={{ height: 44 }}
         label="Age"
         onChange={handleChange}
@@ -26,9 +34,11 @@ export function FilterDropdown() {
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        {topics.map((topic) => (
+          <MenuItem key={topic} value={topic}>
+            {topic}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   )
