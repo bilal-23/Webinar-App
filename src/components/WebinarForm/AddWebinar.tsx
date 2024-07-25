@@ -1,18 +1,21 @@
-import { useState } from "react"
 import * as React from "react"
+import { useWebinarStore } from "@/store/webinar-store"
 import Dialog from "@mui/material/Dialog"
+import { useShallow } from "zustand/react/shallow"
 
 import { WebinarForm } from "./Form"
 
 export function AddWebinar() {
-  const [open, setOpen] = useState(false)
+  const { webinarFormState, setWebinarFormState, setActiveWebinar } =
+    useWebinarStore(useShallow((state) => state))
 
   const handleClickOpen = () => {
-    setOpen(true)
+    setWebinarFormState("open")
   }
 
   const handleClose = () => {
-    setOpen(false)
+    setWebinarFormState("closed")
+    setActiveWebinar(null)
   }
 
   return (
@@ -30,7 +33,7 @@ export function AddWebinar() {
           paper: "rounded-2xl border border-light-border-0 shadow-light",
         }}
         onClose={handleClose}
-        open={open}
+        open={webinarFormState === "open"}
       >
         <WebinarForm closeForm={handleClose} />
       </Dialog>

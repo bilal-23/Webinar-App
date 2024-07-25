@@ -1,9 +1,13 @@
+import { useWebinarStore } from "@/store/webinar-store"
+import { useShallow } from "zustand/react/shallow"
+
 import { UserIcon } from "../ui/icons"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { ImageInput } from "./ImageInput"
 
 export function InstructorDetailsFormSection() {
+  const { activeWebinar } = useWebinarStore(useShallow((state) => state))
   return (
     <div className="flex items-start gap-8">
       {/* Icon */}
@@ -22,9 +26,9 @@ export function InstructorDetailsFormSection() {
                 <span className="text-[#BE1818]">*</span>
               </Label>
               <Input
-                required
                 id="instructor-name"
                 type="text"
+                defaultValue={activeWebinar?.instructorName}
                 minLength={3}
                 name="instructorName"
                 placeholder="Type the instructor name"
@@ -40,6 +44,7 @@ export function InstructorDetailsFormSection() {
                 minLength={3}
                 id="instructor-role"
                 type="text"
+                defaultValue={activeWebinar?.instructorRole}
                 name="instructorRole"
                 placeholder="Type the instructor role"
               />
@@ -55,13 +60,14 @@ export function InstructorDetailsFormSection() {
                 type="text"
                 minLength={3}
                 name="instructorCompany"
+                defaultValue={activeWebinar?.instructorCompany}
                 placeholder="Type the instructor company"
               />
             </div>
           </div>
           <div className="space-y-[19px]">
             {/* Image upload */}
-            <ImageInput />
+            <ImageInput defaultValue={activeWebinar?.image} />
             <div className="flex w-full flex-col items-start gap-3">
               <Label htmlFor="topic">
                 Topic
@@ -74,6 +80,7 @@ export function InstructorDetailsFormSection() {
                 type="text"
                 placeholder="Type the topic"
                 name="topic"
+                defaultValue={activeWebinar?.topic}
               />
             </div>
           </div>
