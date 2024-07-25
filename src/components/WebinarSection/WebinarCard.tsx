@@ -2,6 +2,7 @@
 
 import { useWebinarStore } from "@/store/webinar-store"
 import { timeFormat } from "@/utils/timeFormat"
+import { motion } from "framer-motion"
 import { useShallow } from "zustand/react/shallow"
 
 import { Webinar } from "@/types/webinar"
@@ -14,7 +15,13 @@ export function WebinarCard(this: any, { webinar }: Props) {
   const { deleteWebinar, setActiveWebinar, setWebinarFormState } =
     useWebinarStore(useShallow((state) => state))
   return (
-    <div className="flex h-[321px] w-full shrink-0 flex-col justify-between rounded-3xl border border-light-border-0 bg-light-background-1 p-5 pb-[17px] shadow-light">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.3 } }}
+      exit={{ opacity: 0, x: -100, transition: { duration: 0.5 } }}
+      layout
+      className="flex h-[321px] w-full shrink-0 flex-col justify-between rounded-3xl border border-light-border-0 bg-light-background-1 p-5 pb-[17px] shadow-light"
+    >
       <div className="space-y-4">
         {/* Header */}
         <div className="flex h-[125px] w-full items-center justify-between rounded-2xl bg-light-accent-teal p-6">
@@ -69,6 +76,6 @@ export function WebinarCard(this: any, { webinar }: Props) {
           Edit
         </button>
       </div>
-    </div>
+    </motion.div>
   )
 }

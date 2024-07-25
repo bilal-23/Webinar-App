@@ -13,16 +13,16 @@ interface WebinarStoreInitialState {
 }
 
 interface WebinarStore extends WebinarStoreInitialState {
-  deleteWebinar: (webinarId: string) => void
-  setActiveWebinar: (webinar: Webinar | null) => void
-  setWebinarFormState: (state: "open" | "closed") => void
+  deleteWebinar: (_webinarId: string) => void
+  setActiveWebinar: (_webinar: Webinar | null) => void
+  setWebinarFormState: (_state: "open" | "closed") => void
 
-  addWebinar: (webinar: Webinar) => void
-  updateWebinar: (webinar: Webinar) => void
+  addWebinar: (_webinar: Webinar) => void
+  updateWebinar: (_webinar: Webinar) => void
 
-  setTopics: (topics: string[]) => void
-  setSelectedTopic: (selectedTopic: string) => void
-  setSearchInput: (searchInput: string) => void
+  setTopics: (_topics: string[]) => void
+  setSelectedTopic: (_selectedTopic: string) => void
+  setSearchInput: (_searchInput: string) => void
 }
 
 export const useWebinarStore = create<WebinarStore>((set) => ({
@@ -34,7 +34,7 @@ export const useWebinarStore = create<WebinarStore>((set) => ({
   searchInput: "",
 
   setActiveWebinar: (webinar: Webinar | null) => {
-    set((state) => ({
+    set(() => ({
       activeWebinar: webinar,
     }))
   },
